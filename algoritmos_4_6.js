@@ -310,7 +310,7 @@ function emojifyWord(word) {
     if (newWord in emojis) {
       return emojis[newWord];
     } else {
-      return word;
+      return newWord;
     }
   } else {
     return word;
