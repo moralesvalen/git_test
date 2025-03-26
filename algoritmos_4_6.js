@@ -75,6 +75,16 @@ code rather than searching for an emoji from a list.
 
 For example, typing :smile: will replace that text with 😊 
 
+Los servicios populares como Slack y GitHub permiten el uso de códigos cortos
+ de emojis, lo que significa que detectarán cuando una palabra en una oración 
+ comienza y termina con dos puntos (:) y reemplazarán automáticamente esa palabra 
+ con un emoji.
+
+Estos códigos cortos permiten a los usuarios agregar un emoji a sus mensajes
+ escribiendo un código en lugar de buscar un emoji en una lista.
+
+Por ejemplo, escribir :smile: reemplazará ese texto con 😊.
+
 */
 
 const emojis = {
@@ -92,6 +102,11 @@ look up the word in the emoji object. If the word is in the
 emojis object, return the corresponding emoji.
 If it isn't, return the original word.
 
+Escribe una función que verifique si una palabra en minúsculas comienza y
+termina con dos puntos. Si es así, elimina los dos puntos y busca la palabra
+en el objeto de emojis. Si la palabra está en el objeto de emojis, devuelve
+el emoji correspondiente. Si no está, devuelve la palabra original.
+
 Example input: ":party:"
 Example output: 🎉
 
@@ -103,14 +118,36 @@ Example output: "elephant"
 */ 
 
 function emojifyWord(word){
-    return;
+    let firtChar = word.charAt(0);
+    let lastChart = word.charAt(word.length - 1);
+    let newWord;
+    if (firtChar === ":" && lastChart ===":"){
+        newWord = word.slice(1,word.length - 1); 
+        
+        if  (newWord in emojis ) {
+            return emojis[newWord];
+        } else{
+            return word;
+        }
+         
+        }else {
+            return word;   
+        }
+    return word;
 }
+
+
 
 /* 2. Write a function to find any emoji shortcodes in a phrase.
 Your function should map over each word in the phrase, emojify any word
 that begins and ends with a colon, then return the emojified phrase. 
 Feel free to use your emojify function from the previous exercise!
 
+Escribe una función para encontrar cualquier código corto de emoji en una frase.
+Tu función debe mapear cada palabra en la frase, convertir en emoji cualquier
+palabra que comience y termine con dos puntos, y luego devolver la frase con
+los emojis. Siéntete libre de usar tu función de emojificación del ejercicio 
+anterior.
 Example input: "I :heart: my :cat:"
 Example output: "I 💜 my 🐱"
 
@@ -119,14 +156,14 @@ Example output: "I 💜 my elephant"
 */ 
 
 function emojifyPhrase(phrase){
-    return;
+    let arr  = phrase.split(" ");
+   arr = arr.map(word => emojifyWord(word) );
+   return arr.join(" ");
 }
 
+console.log(emojifyWord(":heart:"));
+console.log(emojifyWord(":flower:"));
+console.log(emojifyWord("elephant"));
 
-
-// console.log(emojifyWord(":heart:"));
-// console.log(emojifyWord(":flower:"));
-// console.log(emojifyWord("elephant"));
-
-// console.log(emojifyPhrase("I :heart: my :cat:"));
-// console.log(emojifyPhrase("I :heart: my :elephant:"));
+console.log(emojifyPhrase("I :heart: my :cat:"));
+console.log(emojifyPhrase("I :heart: my :elephant:"));
