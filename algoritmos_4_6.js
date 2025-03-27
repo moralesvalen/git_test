@@ -374,40 +374,60 @@ Ejemplo de entrada: "allergy", "gallery" Ejemplo de salida: true
 
 Ejemplo de entrada: "rainbow", "crossbow" Ejemplo de salida: false
 
-*/ 
+*/
 
-function isAnagram(str1, str2){
-  arr1 = str1.split("");
-  arr2 = str2.split("");
-  if (arr1.length === arr2.length){
-    let out = arr1.some(letter => arr2.includes(letter));
-    return out;
-
-  }else{
-    return false
+function isAnagram(str1, str2) {
+  arr1 = str1.split("").sort();
+  arr2 = str2.split("").sort();
+  if (arr1.length === arr2.length) {
+    return arr1.every((element, index) => element === arr2[index]);
+  } else {
+    return false;
   }
-
 }
 
-console.log(isAnagram("allergy", "gallery"));
-console.log(isAnagram("treasure", "measure"));
-console.log(isAnagram("sapo", "pasa"));
+/*
 
+function isAnagram(str1, str2){
+    // are the strings the same length? if yes return false. 
+    if(str1.length !== str2.length) return false;
+    
+    // split string into an array
+    // sort
+    // join the array back together as a string
+    const newStr1 = str1.split('').sort().join('');
+    
+    // repeat with second word
+    const newStr2 = str2.split('').sort().join('');
+
+    // are the two words equal? true or false
+    return newStr1 === newStr2;
+}
+
+//console.log(isAnagram("allergy", "gallery"));
+console.log(isAnagram("inch", "chin"));
+console.log(isAnagram("night", "thing"));
+
+*/
+
+console.log("Is anagram: ", isAnagram("allergy", "gallery"));
+console.log("Is anagram: ", isAnagram("treasure", "measure"));
+console.log("Is anagram: ", isAnagram("sapo", "pasa"));
 
 /* We Come in Peace!   
 We've received what (we assume) is a message of peace and brotherhood from 
 an alien planet. They almost got it right, but the messages are 
 backward. Write functions to reverse the backward messages so we can 
 read what they have to say! 
-*/ 
+*/
 
 const title = ":htraE no od ot ffutS";
 const messages = [
-            "maerc eci yrT",
-            "rewoT leffiE tisiV",
-            "noom eht ot snamuh etacoleR",
-            "egrahc ni stac tuP", 
-        ]
+  "maerc eci yrT",
+  "rewoT leffiE tisiV",
+  "noom eht ot snamuh etacoleR",
+  "egrahc ni stac tuP",
+];
 
 /* Step 1: Reverse a string
 Write a function that takes in a string and returns the reverse 
@@ -417,10 +437,10 @@ Practice both ways!
 
 Example input: !htrae ot emocleW
 Example output: Welcome to earth!
-*/  
+*/
 
-function reverseString(str){
-    return str;
+function reverseString(str) {
+  return str;
 }
 
 /*
@@ -429,15 +449,14 @@ an array of strings and returns a new array with all strings reversed.
 
 You can use reuse your reverseString() function, use string methods, or 
 reverse the strings manually. 
-*/ 
+*/
 
-function reverseStringsInArray(arr){
-    return arr;
+function reverseStringsInArray(arr) {
+  return arr;
 }
 
 console.log(reverseString(title));
 console.log(reverseStringsInArray(messages));
-
 
 /*  
 Palindromes are words that are the same forward or backward. For example, 
@@ -453,10 +472,8 @@ Example input: "rotator"
 Example output: true
 */
 
-// Solution 1: for loop 
-function isPalindrome(str){
-
-}
+// Solution 1: for loop
+function isPalindrome(str) {}
 
 // Test your function
 console.log(isPalindrome("abba"));
