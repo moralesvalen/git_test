@@ -417,6 +417,12 @@ We've received what (we assume) is a message of peace and brotherhood from
 an alien planet. They almost got it right, but the messages are 
 backward. Write functions to reverse the backward messages so we can 
 read what they have to say! 
+
+/* ¡Venimos en paz!
+Hemos recibido lo que (suponemos) es un mensaje de paz y hermandad de 
+un planeta alienígena. Casi lo hicieron bien, pero los mensajes están 
+al revés. Escribe funciones para invertir los mensajes al revés para que podamos 
+leer lo que tienen que decir.
 */
 
 const title = ":htraE no od ot ffutS";
@@ -426,6 +432,8 @@ const messages = [
   "noom eht ot snamuh etacoleR",
   "egrahc ni stac tuP",
 ];
+
+
 
 /* Step 1: Reverse a string
 Write a function that takes in a string and returns the reverse 
@@ -438,7 +446,8 @@ Example output: Welcome to earth!
 */
 
 function reverseString(str) {
-  return str;
+  str  = str.split("");
+  return str.reverse().join("");
 }
 
 /*
@@ -447,10 +456,17 @@ an array of strings and returns a new array with all strings reversed.
 
 You can use reuse your reverseString() function, use string methods, or 
 reverse the strings manually. 
+
+Paso 2: Ahora invertiremos todos los strings en un array. Escribe una función que
+tome un array de strings y devuelva un nuevo array con todos los strings invertidos.
+
+Puedes reutilizar tu función reverseString(), usar métodos de string o invertir 
+los strings manualmente.
 */
 
 function reverseStringsInArray(arr) {
-  return arr;
+  arr = arr.map (element => reverseString(element));
+  return arr.join("\n");
 }
 
 console.log(reverseString(title));
@@ -463,6 +479,13 @@ the words "noon" and "kayak" are a palindromes.
 Write a function to check if a lowercased string of letters is a palindrome. 
 If the word is palindrome, return true. If it isn't, return false.
 
+Los palíndromos son palabras que son iguales hacia adelante o hacia atrás. 
+Por ejemplo, las palabras "noon" y "kayak" son palíndromos.
+
+Escribe una función para verificar si una cadena de letras en minúsculas es un 
+palíndromo. Si la palabra es un palíndromo, devuelve true. Si no lo es, devuelve 
+false.
+
 Example input: "motorbike"
 Example output: false
 
@@ -471,7 +494,11 @@ Example output: true
 */
 
 // Solution 1: for loop
-function isPalindrome(str) {}
+function isPalindrome(str) {
+  let arr = str.split("");
+  let strReverse = arr.reverse().join("");
+ return str === strReverse? true: false ;
+}
 
 // Test your function
 console.log(isPalindrome("abba"));
@@ -479,3 +506,146 @@ console.log(isPalindrome("civic"));
 console.log(isPalindrome("octopus"));
 console.log(isPalindrome("pumpkins"));
 console.log(isPalindrome("madam"));
+
+/*  
+Grandpa's hand isn't as steady as it used to be. You finally convinced him
+to start using a password manager, but he accidentally typed and saved his
+password with a bunch of extra characters. Help him recover his password by 
+removing all the duplicate characters. 
+
+Your function should take in a string of characters and return a
+string with the duplicate characters removed. Assume that your input
+is lowercased with only letters and numbers.  
+
+La mano del abuelo no es tan firme como solía ser. Finalmente lo convenciste de empezar
+a usar un gestor de contraseñas, pero accidentalmente escribió y guardó su contraseña 
+con un montón de caracteres adicionales. Ayúdalo a recuperar su contraseña eliminando 
+todos los caracteres duplicados.
+
+Tu función debe recibir una cadena de caracteres y devolver una cadena con los caracteres 
+duplicados eliminados. Supón que tu entrada está en minúsculas y solo contiene letras y números.
+Example input: "aabbccb1212"
+Example output: "abc12"
+*/ 
+const password = "9338dsabbbadjdjdj2sdfdfdf282ff8fdsd888ss8cfgfg332q23"; 
+ 
+function removeDupeChars(chars){
+  let arr = chars.split("");
+  let pass =[];
+
+  arr = arr.filter(letter =>{
+    if (!pass.includes(letter)){
+    pass.push(letter)
+    return true;
+    }else{
+      return false;
+    }
+  })
+    return pass.join("");
+}
+
+console.log(removeDupeChars(password));
+
+/* 
+How often do the letters in your name repeat? 
+
+Write a function that counts how many times each letter of your name
+occurs. Your function should take in your first and last name and return
+an object where the keys are each character in your name, and the value
+is how many times that character appears in your name. 
+
+Example input: "Peggy Porth"
+Example output: {p: 2, e: 1, g: 2, y: 1, o: 1, r: 1, t: 1, h: 1}
+
+Your function should NOT count spaces and should not be case sensitive (a
+lowercase t and a capital T should be considered the same character).
+
+*/ 
+
+function countChars(str){
+  let arr = str.split(" ");
+  let counter ={};
+  arr.map(element =>{
+    for (const letter of element){
+      if (counter[letter]){
+        counter[letter] = parseInt(counter[letter]) + 1;
+      }else {
+        counter[letter] = 1;
+      }
+    }
+  })
+  return counter;   
+}
+console.log(countChars("Peggy Porth"));
+
+/* Chef Mario's Recipe Book 
+Chef Mario was in the middle of writing his cookbook masterpiece
+when he spilled coffee on his keyboard! Now all his recipes have repeat
+ingredients.
+
+Help save Chef Mario's cookbook by writing a function that takes in an array 
+and returns a new array with all the duplicates removed. 
+
+Example input: ["🌈 rainbow", "🦄 unicorn", "🍭 lollipops", "🦄 unicorn", "🍭 lollipops"];
+Example output: ["🌈 rainbow", "🦄 unicorn", "🍭 lollipops"];
+*/ 
+
+const eggScrambleRecipe = [
+  "🥓 bacon",
+  "🥓 bacon", 
+  "🍳 eggs",
+  "🫑 green peppers",
+  "🧀 cheese",
+  "🌶️ hot sauce",
+  "🥓 bacon",
+  "🥦 broccoli", 
+  "🧀 cheese",
+  "🥦 broccoli", 
+  "🌶️ hot sauce"
+]
+
+function removeDupesFromArray(arr){
+  const uniqueRecipt = [...new Set(arr)];
+  return uniqueRecipt;
+}
+console.log(removeDupesFromArray(eggScrambleRecipe));
+
+
+/* 
+Scrimba mascot Pumpkin has won the grand prize at an international 
+cat show. Below are Pumpkin's scores from the judges, as well as all the 
+prizes he's won. In all the excitement of victory,
+they've become a jumbled mess of nested arrays. Let's 
+help Pumpkin by sorting it out. 
+
+Write a function to flatten nested arrays of strings or
+numbers into a single array. There's a method
+for this, but pratice both doing it manually and using the method. 
+
+Traducción: La mascota de Scrimba, Pumpkin, ha ganado el gran premio en un concurso internacional
+ de gatos. A continuación se muestran las puntuaciones de Pumpkin de los jueces, así como todos los
+  premios que ha ganado. En toda la emoción de la victoria, se han convertido en un lío de arrays 
+  anidados. Vamos a ayudar a Pumpkin ordenándolos.
+
+Escribe una función para aplanar arrays anidados de cadenas o números en un solo array. Hay un método
+ para esto, pero practica haciéndolo manualmente y usando el método.
+Example input: [1, [4,5], [4,7,6,4], 3, 5]
+Example output: [1, 4, 5, 4, 7, 6, 4, 3, 5]
+*/
+
+const kittyScores = [
+  [39, 99, 76], 89, 98, [87, 56, 90], 
+  [96, 95], 40, 78, 50, [63]
+];
+
+const kittyPrizes = [
+  ["💰", "🐟", "🐟"], "🏆", "💐", "💵", ["💵", "🏆"],
+  ["🐟","💐", "💐"], "💵", "💵", ["🐟"], "🐟"
+];
+
+function flatten(arr){
+
+}
+
+console.log(flatten(kittyPrizes));
+console.log(flatten(kittyScores));
