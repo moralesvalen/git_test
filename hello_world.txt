@@ -1,3 +1,21 @@
 Hello Odin!
 
 Hola Odin!
+
+1 . Clonar el repositorio (si aún no lo has hecho):
+git clone https://github.com/usuario/repositorio.git
+
+2. Cambiar a la rama específica:
+git checkout nombre_rama
+
+3. Actualizar la rama local con los cambios del repositorio remoto:
+git pull origin nombre_rama
+
+4. Agregar los cambios locales:
+git add .
+
+5. Confirmar los cambios:
+git commit -m "Descripción de los cambios"
+
+6. pull Subir los cambios al repositorio remoto:
+git push origin nombre_rama
