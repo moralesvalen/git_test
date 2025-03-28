@@ -385,9 +385,7 @@ function isAnagram(str1, str2) {
     return false;
   }
 }
-
 /*
-
 function isAnagram(str1, str2){
     // are the strings the same length? if yes return false. 
     if(str1.length !== str2.length) return false;
