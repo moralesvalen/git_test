@@ -433,8 +433,6 @@ const messages = [
   "egrahc ni stac tuP",
 ];
 
-
-
 /* Step 1: Reverse a string
 Write a function that takes in a string and returns the reverse 
 of that string. An interviewer may want to check if you know your
@@ -446,7 +444,7 @@ Example output: Welcome to earth!
 */
 
 function reverseString(str) {
-  str  = str.split("");
+  str = str.split("");
   return str.reverse().join("");
 }
 
@@ -465,8 +463,8 @@ los strings manualmente.
 */
 
 function reverseStringsInArray(arr) {
-  arr = arr.map (element => reverseString(element));
-  return arr.join("\n");
+  arr = arr.map((element) => reverseString(element));
+  return arr.join("");
 }
 
 console.log(reverseString(title));
@@ -497,7 +495,7 @@ Example output: true
 function isPalindrome(str) {
   let arr = str.split("");
   let strReverse = arr.reverse().join("");
- return str === strReverse? true: false ;
+  return str === strReverse ? true : false;
 }
 
 // Test your function
@@ -526,22 +524,22 @@ Tu función debe recibir una cadena de caracteres y devolver una cadena con los 
 duplicados eliminados. Supón que tu entrada está en minúsculas y solo contiene letras y números.
 Example input: "aabbccb1212"
 Example output: "abc12"
-*/ 
-const password = "9338dsabbbadjdjdj2sdfdfdf282ff8fdsd888ss8cfgfg332q23"; 
- 
-function removeDupeChars(chars){
-  let arr = chars.split("");
-  let pass =[];
+*/
+const password = "9338dsabbbadjdjdj2sdfdfdf282ff8fdsd888ss8cfgfg332q23";
 
-  arr = arr.filter(letter =>{
-    if (!pass.includes(letter)){
-    pass.push(letter)
-    return true;
-    }else{
+function removeDupeChars(chars) {
+  let arr = chars.split("");
+  let pass = [];
+
+  arr = arr.filter((letter) => {
+    if (!pass.includes(letter)) {
+      pass.push(letter);
+      return true;
+    } else {
       return false;
     }
-  })
-    return pass.join("");
+  });
+  return pass.join("");
 }
 
 console.log(removeDupeChars(password));
@@ -560,21 +558,21 @@ Example output: {p: 2, e: 1, g: 2, y: 1, o: 1, r: 1, t: 1, h: 1}
 Your function should NOT count spaces and should not be case sensitive (a
 lowercase t and a capital T should be considered the same character).
 
-*/ 
+*/
 
-function countChars(str){
-  let arr = str.split(" ");
-  let counter ={};
-  arr.map(element =>{
-    for (const letter of element){
-      if (counter[letter]){
+function countChars(str) {
+  let arr = str.toLowerCase().split(" ");
+  let counter = {};
+  arr.map((element) => {
+    for (const letter of element) {
+      if (counter[letter]) {
         counter[letter] = parseInt(counter[letter]) + 1;
-      }else {
+      } else {
         counter[letter] = 1;
       }
     }
-  })
-  return counter;   
+  });
+  return counter;
 }
 console.log(countChars("Peggy Porth"));
 
@@ -588,28 +586,27 @@ and returns a new array with all the duplicates removed.
 
 Example input: ["🌈 rainbow", "🦄 unicorn", "🍭 lollipops", "🦄 unicorn", "🍭 lollipops"];
 Example output: ["🌈 rainbow", "🦄 unicorn", "🍭 lollipops"];
-*/ 
+*/
 
 const eggScrambleRecipe = [
   "🥓 bacon",
-  "🥓 bacon", 
+  "🥓 bacon",
   "🍳 eggs",
   "🫑 green peppers",
   "🧀 cheese",
   "🌶️ hot sauce",
   "🥓 bacon",
-  "🥦 broccoli", 
+  "🥦 broccoli",
   "🧀 cheese",
-  "🥦 broccoli", 
-  "🌶️ hot sauce"
-]
+  "🥦 broccoli",
+  "🌶️ hot sauce",
+];
 
-function removeDupesFromArray(arr){
-  const uniqueRecipt = [...new Set(arr)];
+function removeDupesFromArray(arr) {
+  let uniqueRecipt = [...new Set(arr)];
   return uniqueRecipt;
 }
 console.log(removeDupesFromArray(eggScrambleRecipe));
-
 
 /* 
 Scrimba mascot Pumpkin has won the grand prize at an international 
@@ -634,18 +631,31 @@ Example output: [1, 4, 5, 4, 7, 6, 4, 3, 5]
 */
 
 const kittyScores = [
-  [39, 99, 76], 89, 98, [87, 56, 90], 
-  [96, 95], 40, 78, 50, [63]
+  [39, 99, 76],
+  89,
+  98,
+  [87, 56, 90],
+  [96, 95],
+  40,
+  78,
+  50,
+  [63],
 ];
 
 const kittyPrizes = [
-  ["💰", "🐟", "🐟"], "🏆", "💐", "💵", ["💵", "🏆"],
-  ["🐟","💐", "💐"], "💵", "💵", ["🐟"], "🐟"
+  ["💰", "🐟", "🐟"],
+  "🏆",
+  "💐",
+  "💵",
+  ["💵", "🏆"],
+  ["🐟", "💐", "💐"],
+  "💵",
+  "💵",
+  ["🐟"],
+  "🐟",
 ];
 
-function flatten(arr){
-
-}
+function flatten(arr) {}
 
 console.log(flatten(kittyPrizes));
 console.log(flatten(kittyScores));
